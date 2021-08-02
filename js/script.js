@@ -2,7 +2,6 @@
  * Script for a Random Quote Generator
  */
 
- 
 // Creating an array of objects containing quotes and other relevant information
 const quotes = [
   { quote: 'Talent wins games, but teamwork and intelligence wins championships.', source: 'Michael Jordan', tag: 'Sport' },
@@ -12,26 +11,17 @@ const quotes = [
   { quote: 'You miss 100 percent of the shots you never take.', source: 'Wayne Gretzky', year: 1983, tag: 'Sport' }
 ];
 
-// Creating array of colours to be used for changing background colour
-const colours = ['red', 'blue', 'green', 'orange', 'purple', 'magenta', 'brown', 'chartreuse', 'navy', 'olive', 'salmon', 'teal', 'tomato', 'turquoise'];
-
 // Get random number for quotes length and return a random single quote
 function getRandomQuote() {
-  let randomNumber = Math.floor( Math.random() * quotes.length );
+  const randomNumber = Math.floor( Math.random() * quotes.length );
   return quotes[randomNumber];
-}
-
-// Get random number for colours length and return a random single colour name 
-function getRandomColour() {
-  let randomColour = Math.floor( Math.random() * colours.length );
-  return colours[randomColour];
 }
 
 // Create variable and function to setInterval of page reload time for printQuote() function
 let pageReload;
 
 function startTime() {
-  pageReload = setInterval(printQuote, 10000);
+  pageReload = setInterval(printQuote, 3000);
 }
 
 // Clear the setInterval time for pageReload variable. This resets the pageReload time.
@@ -39,12 +29,19 @@ function resetTime() {
   clearInterval(pageReload);
 }
 
+// Get random rgb colour values for body background 
+function getRandomBgColour() {
+  let red = Math.floor(Math.random() * 256);
+  let green = Math.floor(Math.random() * 256);
+  let blue = Math.floor(Math.random() * 256);
+  let rgb = `rgb(${red}, ${green} ,${blue})`;
+  return rgb;
+}
+
 // Start printQuote function to store html instructions for random quotes
 function printQuote() {
   // Create a variable which stores a random quote object from the getRandomQuote() function
   let getQuote = getRandomQuote();
-  // Create a variable which stores a random colour from the getRandomColour() function
-  let getColour = getRandomColour();
   // Create a variable which stores a template literal containing html and placeholders ${} for the getQuote variable
   let html = `<p class="quote">${getQuote['quote']}</p><p class="source">${getQuote['source']}`
   // Conditional statements checking if certain placeholders are present and adds the html to the html string
@@ -61,10 +58,10 @@ function printQuote() {
   html += '</p>'
   // Place the html string in the quote-box div id
   document.getElementById('quote-box').innerHTML = html;
-  // Get the body tag div and select the background color css tag to change the colour using the getColour variable
-  document.body.style.backgroundColor = getColour;
+  // Get the body tag div and select the background color css tag to change the colour using the getRandomBgColour() function
+  document.body.style.backgroundColor = getRandomBgColour();
   // Clear and restart time for page reload
-  clearInterval();
+  resetTime();
   startTime();
 }
 

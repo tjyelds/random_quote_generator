@@ -5,7 +5,7 @@
  
 // Creating an array of objects containing quotes and other relevant information
 const quotes = [
-	{ quote: 'Talent wins games, but teamwork and intelligence wins championships.', source: 'Michael Jordan', tag: 'Sport' },
+  { quote: 'Talent wins games, but teamwork and intelligence wins championships.', source: 'Michael Jordan', tag: 'Sport' },
   { quote: 'The most incomprehensible thing about the world is that it is comprehensible.', source: 'Albert Einstein', citation: 'Physics and Reality', year: 1936, tag: 'Science' },
   { quote: 'It is during our darkest moments that we must focus to see the light.', source: 'Aristotle Onassis', tag: 'Philosophy' },
   { quote: 'What I suffered physically was worth what I’ve accomplished in life. A man who is not courageous enough to take risks will never accomplish anything in life.', source: 'Muhammad Ali', citation: 'Press conference', year: 'October 28, 1984', tag: 'Sport' },
